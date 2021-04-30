@@ -1,0 +1,54 @@
+// bsrc.rc - ball sim. resource file
+// Copyright 2006 Chad Berchek
+
+#include "bsrc.h"
+#include <windows.h>
+
+IDI_MAINICON ICON "smile.ico"
+
+IDM_MENU MENU
+BEGIN
+	POPUP "&Menu"
+	BEGIN
+	   MENUITEM "&Add a ball...\tA", IDMI_MENU_ADDBALL
+	   MENUITEM "Add &10 random balls", IDMI_MENU_ADD10BALLS
+	   MENUITEM "&Remove all balls", IDMI_MENU_REMOVEALLBALLS
+	   MENUITEM SEPARATOR
+	   MENUITEM "A&bout...", IDMI_MENU_ABOUT
+	   MENUITEM SEPARATOR
+	   MENUITEM "E&xit", IDMI_MENU_EXIT
+	END
+END
+
+IDD_ADDBALL DIALOG 0, 0, 224, 109
+STYLE WS_SYSMENU
+CAPTION "Add a ball"
+FONT 8, "MS Sans Serif"
+BEGIN
+	RTEXT "Diameter (in pixels):", IDC_DIAMETERTEXT, 0, 8, 150, 13
+	EDITTEXT IDC_DIAMETERENTRY, 155, 7, 61, 13
+	RTEXT "Mass (in grams):", IDC_MASSTEXT, 0, 24, 150, 13
+	EDITTEXT IDC_MASSENTRY, 155, 23, 61, 13
+	RTEXT "Initial horizontal velocity (in pixels per second):", IDC_VXTEXT, 0, 40, 150, 13
+	EDITTEXT IDC_VXENTRY, 155, 39, 61, 13
+	RTEXT "Initial vertical velocity (in pixels per second):", IDC_VYTEXT, 0, 56, 150, 13
+	EDITTEXT IDC_VYENTRY, 155, 55, 61, 13
+	PUSHBUTTON "Choose color...", IDC_COLOR, 155, 71, 61, 14
+	PUSHBUTTON "Cancel", IDC_CANCEL, 116, 90, 61, 14
+	DEFPUSHBUTTON "Add ball", IDC_ADDBALL, 47, 90, 61, 14
+END
+
+IDD_ABOUT DIALOGEX 0, 0, 155, 90
+STYLE WS_SYSMENU
+CAPTION "About"
+FONT 8, "MS Sans Serif"
+BEGIN
+	CTEXT "Bouncescope 1.1\r\nVobarian Software\r\n\r\nFor documentation, see:\r\nhttp://www.vobarian.com/\r\n\r\nCopyright 2009 Chad Berchek", IDC_ABOUTTEXT, 46, 6, 104, 67
+	//ICON "smile", 21, 12, 29 //ICON text, id, x, y [, width, height, style [, extended-style]]
+	DEFPUSHBUTTON "OK", IDC_ABOUT_OK, 73, 70, 40, 14
+END
+
+IDA_MAINACCEL ACCELERATORS
+BEGIN
+	"A", IDMI_MENU_ADDBALL, VIRTKEY
+END
